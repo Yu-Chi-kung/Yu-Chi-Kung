@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kung Yu Chi</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylish-portfolio.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+  <!-- 外部字形 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Dancing Script'
+    }
+
+    .myBtn {
+      background-color: rgb(200, 162, 236);
+      color: #fff;
+    }
+
+    .btn-defult {
+      background-color: rgb(200, 162, 236);
+      color: #fff;
+    }
+
+    /* 首頁 */
+    .banner {
+      /* 滿版設定 */
+      background-color: rgb(193, 139, 243);
+      width: 100%;
+      /* % =>依內容高度來決定 */
+      /* height: 100%; */
+      /* vh =>依視窗高度為主 */
+      height: 100vh;
+      background: linear-gradient(65deg, rgb(227, 168, 249) 55%, transparent 70%),
+        url("./img/myphoto.jpg") right center /auto 150%;
+    }
+
+    /* 文字區 */
+    .container img {
+      width: 400px;
+      height: 300px;
+      margin: auto;
+    }
+
+    .banner-text {
+      /* height: 80%; */
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: 'Caprasimo', cursive;
+    }
+
+    .banner-text h1 {
+      font-size: 50px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      font-family: 'Caprasimo', cursive;
+    }
+
+    .banner-text h1 small {
+      display: block;
+      font-size: 50px;
+      font-family: 'Caprasimo', cursive;
+    }
+
+    .banner-text h2 {
+      font-size: 55px;
+
+    }
+
+    .banner-text p {
+      font-size: 30px;
+    }
+
+    .section-box {
+      height: 100%;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
+      padding-top: 150px;
+      text-align: center;
+    }
+
+    .section h1 {
+      margin-bottom: center;
+    }
+
+    .txt-bg {
+      background-color: rgba(255, 255, 255, 0.689);
+      margin: 10;
+      border-radius: 25px;
+      padding: 40px;
+    }
+
+    .content-left {
+      width: 50%;
+      height: 350px;
+      float: left;
+      /* 浮動靠左 */
+      margin-top: 100px;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .content-right {
+      width: 50%;
+      height: 350px;
+      float: right;
+      /* 浮動靠右 */
+      margin-top: 100px;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    #fixedTop {
+      background-color: rgb(200, 162, 236);
+      color: #000;
+      text-decoration: none;
+      padding: 15px 20px;
+      position: fixed;
+      display: flex;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: none;
+    }
+
+    .form {
+      width: 600px;
+      height: 500px;
+      background-color: #c1a8eca0;
+      border-radius: 10px;
+      /* 水平 上下 擴展 */
+      box-shadow: 0 0 20px #000;
+      border: 5px solid #fff;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form {
+      display: 200px;
+      color: #000;
+    }
+
+    .form h2 {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #c72afb;
+      padding-bottom: 40px;
+
+    }
+
+    .name1 h3 {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #c72afb;
+      padding-bottom: 40px;
+    }
+
+    .container-fluid {
+      margin-top: 30px;
+      background-color: aquamarine;
+
+    }
+
+    .container-fluid p {
+
+      font-family: 'Caprasimo', cursive;
+      text-align: center;
+    }
+
+    /* 卡片式 */
+    .intro {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .item {
+      position: relative;
+      width: 50%;
+    }
+
+    .item img {
+     
+      width: 100%;
+      vertical-align: bottom;
+
+    }
+
+    .item .txt {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, .3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .5s;
+
+    }
+
+    .item:hover .txt {
+      opacity: 1;
+      /* font-size: 2em; */
+    }
+
+    .item .txt h2 {
+      color: aliceblue;
+      font-size: 2em;
+    }
+
+    /* 動態產生線段:使用偽元素after */
+    .item .txt h2::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      margin: 10px 0;
+      background-color: aliceblue;
+    }
+
+    .item:hover .txt h2::after {
+      width: 100%;
+      transition: width .5s;
+    }
+
+    .item .txt p {
+      font-size: 18px;
+      color: aliceblue;
+
+    }
+
+
+    /* 作品集 */
+    .wrap {
+      width: 1200px;
+      margin: 0 auto;
+      column-count: 4;
+      column-gap: 5px;
+    }
+
+    h1 {
+      padding-top: 25px;
+      margin-top: 10%;
+      text-align: center;
+
+    }
+
+    .box {
+
+      text-align: center;
+      padding: 5px 5px;
+      box-sizing: border-box;
+      /* 邊框效果 */
+      /* width: 394px; */
+      /* border: 1px solid #333; */
+      /* margin: 2px; */
+
+      width: 100%;
+      /* box-shadow: 0px 0px 5px #000; */
+      margin: 0 auto 5px;
+      break-inside: avoid;
+      /* 陰影效果 */
+      /* box-shadow: 水平 垂直 模糊度 色彩; */
+
+
+    }
+
+    .wrap img {
+      /* margin-left: 5%; */
+      width: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+      vertical-align: bottom;
+    }
+  </style>
+</head>
+
+<body>
+  <audio src="./mov/Butterfly Piano .mp3" autoplay loop></audio>
+  <!-- body code goes here -->
+  <!-- 側邊選單(Side Menu)三橫線 -->
+  <a id="menu-toggle" href="#" class=" btn-lg toggle myBtn">
+    <span class="fa fa-bars"></span>
+  </a>
+  <!--側邊選單(Side Menu)選項  -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a href="#" id="menu-close" class="btn btn-defult btn-lg pull-right toggle">
+        <span class="fa fa-times"></span>
+      </a>
+      <li class="sidebar-brand">
+        <a href="#Kung Yu Chi">Kung Yu Chi</a>
+      </li>
+      <li class="page-scroll">
+        <a href="#My Story">My Story</a>
+      </li>
+      <li class="page-scroll">
+        <a href="#Works">Works</a>
+      </li>
+      <li class="page-scroll">
+        <a href="#Photographic">Photographic</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 個人介紹 -->
+  <div class="banner">
+    <div class="container">
+      <div class="banner-text">
+        <h1><b>공옥기</b>
+          <br>
+          <small>
+            Kung Yu Chi
+          </small>
+        </h1>
+        <br>
+        <h5><b>最重要的事莫過於享受你的人生,
+            <br>活的開心,這是最重要的.
+          </b></h5>
+        <p>The most important thing is
+          <br>to enjoy your life to be happy it's all that matter.
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- 滿版圖片 -->
+  <!-- mystory-->
+  <section class="section-box" id="mystory">
+    <div class="container">
+      <div class="row txt-bg">
+        <div>
+          <h1><i class="bi bi-egg-fried text-danger mr-3"></i><b>My Story</b></h1>
+          <div class="content-left">
+            <p><b>畢業於臺灣 大葉大學視覺傳達設計學系。</p>
+            <p><b>Birthday:2000.04.05 ,</b> </p>
+            <p><b>Interest:Art、Music(K-POP)、Read Literary novels,</b></p>
+          </div>
+          <div class="content-right">
+            <p><b>|2022 MARCH-JUNE 大葉大學兼職老師助教,</b></p>
+            <p><b>|JUNE 從大葉大學視覺傳達設計學系畢業,</b></p>
+            <p><b>|AUGUST-SEPTEMBER 叮噹牙醫-牙助,</b></p>
+            <p><b>|OCTOBER NXCOFFEE-PT,|2023 MAY It's Poke-PT </b></p>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- 卡片式 -->
+  <div id="menu1" class="intro">
+    <div class="row">
+      <div class="text-center col-md-6 offset-md-3">
+        <!-- 主標題 -->
+        <h2>WORKS</h2>
+        <hr>
+      </div>
+      <div class="item">
+        <img src="./img/work1.png" alt="">
+        <div class="txt">
+          <h2>品牌設計</h2>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="./img/work2.png" alt="">
+        <div class="txt">
+          <h2>包裝設計</h2>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="./img/work3.jpg" alt="">
+        <div class="txt">
+          <h2>個人資訊圖表</h2>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+      <div class="item
+      ">
+        <img src="./img/work4.png" alt="">
+        <div class="txt">
+          <h2>STARGAZER</h2>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+  <!-- <div class="name1 text-center col-md-6 offset-md-3"> -->
+
+  <!-- </div> -->
+  <h1><b>Photographic</b></h1>
+  <div class="wrap">
+    <div class="box">
+      <img src="./img/photo1.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo2.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo3.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo4.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo5.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo6.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo7.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo8.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo9.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo10.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo11.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo12.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo13.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo14.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo15.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo16.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo17.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo18.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo19.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo20.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo21.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo22.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo23.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo24.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo25.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="./img/photo26.jpg" alt="">
+    </div>
+  </div>
+  <!-- 頁尾 -->
+  <footer class="container-fluid">
+    <hr>
+    <p> &copy; 2023.by Kung Yu Chi<br>
+      Gmail:co279476@gmail.com
+    </p>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.3.1.js"></script>
+    <script src="./web1009/js/jquery-1.11.3.min.js"></script>
+    <!-- 載入圖片的主程式 -->
+    <script src="./jQuery/js/imagesloaded.pkgd.min.js"></script>
+    <!--瀑布流主程式  -->
+    <script src="./jQuery/js/masonry.pkgd.min.js"></script>
+
+    <script>
+
+      // 關閉按鈕
+      $(function () {
+        $('#menu-close').click(function (e) {
+          e.preventDefault();
+          $('#sidebar-wrapper').toggleClass('active');
+        });
+      });
+
+      // 漢堡按鈕
+      $(function () {
+        $('#menu-toggle').click(function (e) {
+          e.preventDefault();
+          $('#sidebar-wrapper').toggleClass('active');
+        });
+      });
+      //啟動瀑布流效果 
+      $(function () {
+        // 載入圖片
+        $('.wrap').imagesLoaded(function () {
+          // 瀑布流方式排列
+          $('.wrap').masonry();
+        });
+      });
+
+
+      // <!-- JS -->
+      $(function () {
+        $('body').append('<a href="javascript:void(0);" id="fixedTop">TOP</a>');
+        $(window).on('load scroll resize', function () {
+          if ($(window).scrollTop() > 100) {
+            $('#fixedTop').fadeIn('normal');
+          } else {
+            $('#fixedTop').fadeOut('normal');
+          }
+        });
+
+        //按下TOP按紐回到最頂端
+        $('#fixedTop').on('click', function () {
+          $('html,body').animate({ scrollTop: '0' }, 500);
+
+        });
+      });
+
+    </script>
+
+</body>
+
+</html>
